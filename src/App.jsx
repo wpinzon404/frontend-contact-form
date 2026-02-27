@@ -4,17 +4,10 @@ import { ContactForm } from './components/ContactForm';
 import { ContactList } from './components/ContactList';
 import './App.css';
 
-/**
- * Componente raíz. Gestiona qué contacto se está editando
- * y decide si el formulario debe crear o actualizar.
- */
 export default function App() {
   const { contacts, loading, error, addContact, editContact, deleteContact } = useContacts();
-
-  // null = modo creación; un objeto contacto = modo edición
   const [editing, setEditing] = useState(null);
 
-  // Un solo handler para crear y actualizar — el formulario no necesita saber cuál es
   const handleSubmit = (fields) =>
     editing ? editContact(editing.id, fields) : addContact(fields);
 
@@ -23,7 +16,12 @@ export default function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Formulario de Contacto</h1>
+        <div className="header-inner">
+          <div className="header-text">
+            <h1>Agenda de Contactos</h1>
+            <p>Prueba técnica Wilmer Guzmán</p>
+          </div>
+        </div>
       </header>
 
       <main className="app-main">
@@ -40,6 +38,10 @@ export default function App() {
           onDelete={deleteContact}
         />
       </main>
+
+      <footer className="app-footer">
+        © {new Date().getFullYear()} Agenda de Contactos — Todos los derechos reservados
+      </footer>
     </div>
   );
 }

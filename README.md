@@ -66,16 +66,6 @@ La aplicación quedará disponible en: `http://localhost:5173`
 
 ---
 
-## Funcionalidades
-
-- Listar todos los contactos ordenados por fecha
-- Crear un nuevo contacto con validación en el cliente
-- Editar un contacto existente
-- Eliminar un contacto con confirmación (SweetAlert2)
-- Notificaciones de éxito y error con alertas visuales
-
----
-
 ## Estructura del proyecto
 
 ```
@@ -102,20 +92,6 @@ frontend/
 ├── package.json                 # Dependencias y scripts
 └── vite.config.js               # Configuración de Vite
 ```
-
----
-
-## Validaciones del formulario
-
-Los campos se validan en el cliente antes de enviar la petición:
-
-| Campo   | Reglas                                          |
-|---------|-------------------------------------------------|
-| Nombre  | Obligatorio, mínimo 2 caracteres, máximo 100    |
-| Correo  | Obligatorio, formato de email válido            |
-| Mensaje | Obligatorio, mínimo 10 caracteres               |
-
----
 
 ## Notas
 

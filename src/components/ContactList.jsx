@@ -1,18 +1,40 @@
 import { ContactCard } from './ContactCard';
 
-/**
- * Renderiza la lista de contactos.
- * Usa guard clauses para manejar los estados de carga, error y lista vacía
- * antes del render principal, manteniendo el JSX limpio.
- */
 export function ContactList({ contacts, loading, error, onEdit, onDelete }) {
-  if (loading)               return <p className="state-msg">Cargando contactos…</p>;
-  if (error)                 return <p className="state-msg error-text">Error: {error}</p>;
-  if (contacts.length === 0) return <p className="state-msg">Aún no hay contactos registrados.</p>;
+  if (loading) {
+    return (
+      <div className="state-msg">
+        <div className="empty-state">
+          <span className="empty-state-text">Cargando contactos…</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="error-banner">
+        Error al cargar los contactos: {error}
+      </div>
+    );
+  }
+
+  if (contacts.length === 0) {
+    return (
+      <div className="state-msg">
+        <div className="empty-state">
+          <span className="empty-state-text">Aún no hay contactos registrados.</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <section className="contact-list">
-      <h2>Contactos ({contacts.length})</h2>
+      <div className="list-header">
+        <h2>Contactos</h2>
+        <span className="list-badge">{contacts.length}</span>
+      </div>
       {contacts.map((contact) => (
         <ContactCard
           key={contact.id}
